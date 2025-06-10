@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPS Gravações - Especialistas em Gravação a Laser em Metais</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .card h3 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Quem Somos */
+        .about-section {
+            padding: 3rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 20px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            background: #f1f5f9;
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-style: italic;
+            transition: all 0.3s ease;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .gallery-item:hover {
+            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.1));
+            border-color: #00d4ff;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d4ff;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00d4ff;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #00d4ff;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float svg {
+            width: 30px;
+            height: 30px;
+            fill: white;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1);
+            }
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 5px solid transparent;
+            border-left-color: #1e293b;
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+        }
+
+        /* Contact Buttons */
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            color: white;
+            min-width: 150px;
+        }
+
+        .contact-btn.whatsapp {
+            background: linear-gradient(45deg, #25d366, #20b358);
+        }
+
+        .contact-btn.whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-btn.email {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+        }
+
+        .contact-btn.email:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Responsive */
+            @media (max-width: 768px) {
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-container {
+                padding: 0 1rem;
+            }
+
+            .whatsapp-float {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .whatsapp-float svg {
+                width: 25px;
+                height: 25px;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">BPS Gravações</div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#diferenciais">Diferenciais</a></li>
+                <li><a href="#galeria">Galeria</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
+            <div class="hero-content">
+                <h1>Gravações de Alta Precisão em Metais</h1>
+                <p>Transformamos suas ideias em realidade com tecnologia laser avançada, oferecendo gravações e personalizações de máxima qualidade para identificação e rastreabilidade industrial.</p>
+                <a href="#contato" class="cta-button">Solicite um Orçamento</a>
+            </div>
+        </section>
+
+        <!-- Quem Somos -->
+        <section id="sobre" class="fade-in">
+            <div class="about-section">
+                <h2 class="section-title">Quem Somos</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <h3>Nossa Missão</h3>
+                        <p>Fornecer gravações de alta performance em metais, com foco em qualidade, agilidade e soluções versáteis para identificação e personalização em diversos setores industriais.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Nossa Visão</h3>
+                        <p>Ser a principal referência em gravação e personalização no Paraná até 2028, sendo a primeira escolha dos nossos clientes quando o assunto é excelência e inovação.</p>
+                    </div>
+                </div>
+                
+                <h3 style="text-align: center; margin: 3rem 0 2rem; color: #1e293b; font-size: 1.8rem;">Nossos Valores</h3>
+                <div class="values-grid">
+                    <div class="value-item">
+                        <div class="value-icon">🌱</div>
+                        <h4>Respeito</h4>
+                        <p>Às pessoas e ao meio ambiente em todas as nossas operações</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">🚀</div>
+                        <h4>Inovação</h4>
+                        <p>Orientada por processos eficientes e tecnologia de ponta</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⭐</div>
+                        <h4>Simplicidade</h4>
+                        <p>Soluções diretas e eficazes para suas necessidades</p>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-icon">⚡</div>
+                        <h4>Agilidade</h4>
+                        <p>Prazos curtos sem comprometer a qualidade</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="fade-in">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Gravação a Laser em Metais</h3>
+                    <p>Gravações permanentes de alta precisão em diversos tipos de metais, garantindo durabilidade e legibilidade perfeita em qualquer ambiente industrial.</p>
+                </div>
+                <div class="card">
+                    <h3>Identificação Técnica</h3>
+                    <p>Placas de identificação personalizadas para equipamentos, máquinas e componentes industriais, seguindo normas técnicas e regulamentações específicas.</p>
+                </div>
+                <div class="card">
+                    <h3>Personalização Industrial</h3>
+                    <p>Soluções customizadas para marcação de peças, numeração sequencial, códigos de barras e informações técnicas específicas do seu segmento.</p>
+                </div>
+                <div class="card">
+                    <h3>Sistemas de Rastreabilidade</h3>
+                    <p>Implementação de códigos e marcações que permitem o rastreamento completo de peças e componentes ao longo de toda a cadeia produtiva.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diferenciais -->
+        <section id="diferenciais" class="fade-in">
+            <h2 class="section-title">Nossos Diferenciais</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Qualidade Superior</h3>
+                    <p>Utilizamos equipamentos de tecnologia laser avançada que garantem gravações com precisão micrométrica e acabamento impecável em todas as peças.</p>
+                </div>
+                <div class="card">
+                    <h3>Prazos Expressos</h3>
+                    <p>Nossa estrutura otimizada permite entregas rápidas sem comprometer a qualidade, atendendo urgências e demandas com prazos desafiadores.</p>
+                </div>
+                <div class="card">
+                    <h3>Precisão Técnica</h3>
+                    <p>Controle rigoroso de qualidade em cada etapa do processo, garantindo que todas as especificações técnicas sejam atendidas perfeitamente.</p>
+                </div>
+                <div class="card">
+                    <h3>Atendimento Personalizado</h3>
+                    <p>Cada projeto é tratado de forma única, com consultoria especializada para encontrar a melhor solução para sua aplicação específica.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galeria -->
+        <section id="galeria" class="fade-in">
+            <h2 class="section-title">Nossos Trabalhos</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">Placas de Identificação Industrial</div>
+                <div class="gallery-item">Gravação em Aço Inoxidável</div>
+                <div class="gallery-item">Marcação de Componentes</div>
+                <div class="gallery-item">Códigos de Rastreabilidade</div>
+                <div class="gallery-item">Personalização em Alumínio</div>
+                <div class="gallery-item">Numeração Sequencial</div>
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato" class="fade-in">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 2rem;">Informações de Contato</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>E-mail</strong><br>
+                            contato@bpsgravacoes.com.br
+                        </div>
+                    </div>
+                    
+                    <div class="contact-buttons">
+                        <a href="https://wa.me/5541999040143?text=Olá! Gostaria de solicitar um orçamento para gravação a laser." class="contact-btn whatsapp" target="_blank">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.384"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:contato@bpsgravacoes.com.br?subject=Solicitação de Orçamento - BPS Gravações&body=Olá! Gostaria de solicitar um orçamento para:" class="contact-btn email">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            E-mail
+                        </a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>Telefone/WhatsApp</strong><br>
+                            (41) 99904-0143
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Endereço</strong><br>
+                            Pinhais - Paraná<br>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Horário de Atendimento</strong><br>
+                            Segunda a Sexta: 8h às 18h<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Quem Somos</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#diferenciais">Diferenciais</a>
+                <a href="#galeria">Galeria</a>
+                <a href="#contato">Contato</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="https://wa.me/5541999040143?text=Olá! Gostaria de conhecer mais sobre os serviços da BPS Gravações." title="WhatsApp" target="_blank">💬</a>
+                <a href="mailto:contato@bpsgravacoes.com.br" title="E-mail">📧</a>
+            </div>
+            
+            <div style="border-top: 1px solid #334155; padding-top: 2rem; color: #94a3b8;">
+                <p>&copy; 2025 BPS Gravações. Todos os direitos reservados.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                    Especialistas em gravação a laser | Curitiba - Paraná
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5541999040143?text=Olá! Gostaria de solicitar um orçamento para gravação a laser na BPS Gravações." class="whatsapp-float" target="_blank">
+        <div class="whatsapp-tooltip">Fale conosco no WhatsApp</div>
+        <svg viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.384"/>
+        </svg>
+    </a>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu toggle (basic implementation)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
