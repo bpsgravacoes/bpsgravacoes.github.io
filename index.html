@@ -338,12 +338,33 @@
             color: #64748b;
             font-style: italic;
             transition: all 0.3s ease;
-            border: 2px dashed #cbd5e1;
+            object-fit: scale-down;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem;
         }
 
         .gallery-item:hover {
             background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.1));
             border-color: #00d4ff;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
+            object-fit: scale-down;
+            border-radius: 10px;
         }
 
         /* Contact Form */
@@ -879,12 +900,42 @@
         <section id="galeria" class="fade-in">
             <h2 class="section-title">Nossos Trabalhos</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">Placas de Identificação Industrial</div>
-                <div class="gallery-item">Gravação em Aço Inoxidável</div>
-                <div class="gallery-item">Marcação de Componentes</div>
-                <div class="gallery-item">Códigos de Rastreabilidade</div>
-                <div class="gallery-item">Personalização em Alumínio</div>
-                <div class="gallery-item">Numeração Sequencial</div>
+                <div class="gallery-item">
+                    <img src="images/industrial.png" alt="Placas de Identificação Industrial" loading="lazy" >
+                    <div class="gallery-overlay">
+                        <h4>Placas de Identificação Industrial</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/stainless-steel.png" alt="Gravação em Aço Inoxidável" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Gravação em Aço Inoxidável</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Component Marking.png" alt="Marcação de Componentes" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Marcação de Componentes</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/rastreability.png" alt="Códigos de Rastreabilidade" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Códigos de Rastreabilidade</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/aluminum-customization.png" alt="Personalização em Alumínio" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Personalização em Alumínio</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/card.png" alt="Cartões" loading="lazy">
+                    <div class="gallery-overlay">
+                        <h4>Cartões</h4>
+                    </div>
+                </div>
             </div>
         </section>
 
