@@ -37,7 +37,7 @@
                     "name": "Paraná, BR"
                 }
             ],
-            "telephone": "+5541998065501",
+            "telephone": "+5541999845501",
             "email": "contato@bpsgravacoes.com.br",
             "url": "https://www.bpsgravacoes.com.br",
             "description": "Especialistas em fotogravação e gravação a laser em metais no Paraná.",
@@ -47,1127 +47,856 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gravação a laser em metais com alta precisão – placas industriais, personalização, rastreamento. Atendemos Curitiba, Pinhais, PR, Brasil.">
-    <title>BPS Gravações - Especialistas em Gravação a Laser em Metais</title>
+    <meta name="description" content="BPS Gravações - Especialistas em gravação e marcação a laser profissional em metais, alumínio, inox e madeira. Tecnologia de fibra óptica para identificação industrial.">
+    <meta name="keywords" content="gravação a laser, marcação laser, identificação industrial, plaquetas alumínio, códigos QR, laser fibra óptica, gravação a laser e pintura">
+    <meta name="author" content="BPS Gravações">
+    <title>BPS Gravações - Gravação e Marcação a Laser Profissional</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+        
+        html {
+            scroll-behavior: smooth;
         }
-
-        /* Header */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
         }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #00d4ff;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+        
+        .nav-link {
             position: relative;
+            transition: color 0.3s ease;
         }
-
-        .nav-links a:hover {
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-        }
-
-        .mobile-menu {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu:hover {
-            background: rgba(0, 212, 255, 0.1);
-        }
-
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: all 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .mobile-menu.active span:nth-child(1) {
-            transform: rotate(-45deg) translate(-6px, 6px);
-        }
-
-        .mobile-menu.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu.active span:nth-child(3) {
-            transform: rotate(45deg) translate(-6px, -6px);
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
+        
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 0;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(0,212,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(1deg); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00d4ff, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5)); }
-            to { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8)); }
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        
+        .nav-link:hover::after {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
         }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        
         .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #1e293b;
             position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
         }
-
+        
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            width: 60px;
+            height: 4px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
             border-radius: 2px;
         }
-
-        /* Cards */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 212, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
-        }
-
-        .card h3 {
-            color: #1e293b;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .card p {
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        /* Quem Somos */
-        .about-section {
-            padding: 3rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            border-radius: 20px;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .value-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .value-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-            color: white;
-        }
-
-        /* Gallery */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-item {
-            background: #f1f5f9;
-            height: 200px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-style: italic;
-            transition: all 0.3s ease;
-            object-fit: scale-down;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            width: 100%;
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .gallery-item:hover {
-            background: linear-gradient(45deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.1));
-            border-color: #00d4ff;
-        }
-
-        .gallery-item img {
-            max-width: 100%;
-            max-height: 100%;
-            width: 100%;
-            height: 100%;
-            object-fit: scale-down;
-            border-radius: 10px;
-        }
-
-        /* Contact Form */
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1e293b;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00d4ff;
-            box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            color: white;
-            padding: 1rem;
-            border-radius: 15px;
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 212, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00d4ff;
-        }
-
-        /* Footer */
-        footer {
-            background: #0f172a;
-            color: white;
-            padding: 3rem 2rem 1rem;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #00d4ff;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(0, 212, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00d4ff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #00d4ff;
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* WhatsApp Float Button */
+        
         .whatsapp-float {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
             width: 60px;
             height: 60px;
-            background: #25d366;
-            border-radius: 50%;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            text-decoration: none;
         }
-
+        
         .whatsapp-float:hover {
+            background-color: #20ba5a;
             transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-float svg {
-            width: 30px;
-            height: 30px;
-            fill: white;
-        }
-
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1);
-            }
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
-        }
-
-        .whatsapp-tooltip {
-            position: absolute;
-            right: 70px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #1e293b;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 14px;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .whatsapp-tooltip::after {
-            content: '';
-            position: absolute;
-            right: -5px;
-            top: 50%;
-            transform: translateY(-50%);
-            border: 5px solid transparent;
-            border-left-color: #1e293b;
-        }
-
-        .whatsapp-float:hover .whatsapp-tooltip {
-            opacity: 1;
-        }
-
-        /* Contact Buttons */
-        .contact-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.3s ease;
-            color: white;
-            min-width: 150px;
-        }
-
-        .contact-btn.whatsapp {
-            background: linear-gradient(45deg, #25d366, #20b358);
-        }
-
-        .contact-btn.whatsapp:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
-        }
-
-        .contact-btn.email {
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
-        }
-
-        .contact-btn.email:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
-        }
-
-        /* Header Responsive */
-        @media (max-width: 768px) {
-            nav {
-                padding: 0 1rem;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-        }
-
-        /* Mobile Menu Styles */
-        @media (min-width: 769px) {
-            .mobile-menu {
-                display: none !important;
-            }
-
-            .nav-links {
-                display: flex !important;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 5rem 2rem 2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 1000;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-
-            .nav-links a {
-                display: block;
-                width: 100%;
-                padding: 1rem;
-                color: white;
-                text-decoration: none;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-                font-size: 1.1rem;
-                border-left: 3px solid transparent;
-            }
-
-            .nav-links a:hover {
-                background: rgba(0, 212, 255, 0.1);
-                border-left-color: #00d4ff;
-                transform: translateX(5px);
-            }
-
-            .mobile-menu {
-                display: flex;
-                z-index: 1001;
-            }
-
-            .contact-buttons {
-                flex-direction: column;
-            }
-
-            .contact-container {
-                padding: 0 1rem;
-            }
-
-            .whatsapp-float {
-                bottom: 15px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-            }
-
-            .whatsapp-float svg {
-                width: 25px;
-                height: 25px;
-            }
-
-            .whatsapp-tooltip {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-
-            .hero-content {
-                padding: 0 1rem;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .cta-button {
-                padding: 0.8rem 2rem;
-                font-size: 1rem;
-            }
-
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                width: 100vw;
-                right: -100vw;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-        }
-
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">BPS Gravações</div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Quem Somos</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#diferenciais">Diferenciais</a></li>
-                <li><a href="#galeria">Galeria</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+<body class="bg-gray-50">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#inicio" class="text-2xl font-bold text-blue-600">
+                        <img src="/images/logo-retangular.webp" alt="" class="h-10 w-auto" />
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Início</a>
+                    <a href="#servicos" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Serviços</a>
+                    <a href="#produtos" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Produtos</a>
+                    <a href="#sobre" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Sobre</a>
+                    <a href="#contato" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Contato</a>
+                    <a href="#contato" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300 font-medium">
+                        Solicitar Orçamento
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#inicio" class="block py-2 text-gray-700 hover:text-blue-600">Início</a>
+                <a href="#servicos" class="block py-2 text-gray-700 hover:text-blue-600">Serviços</a>
+                <a href="#produtos" class="block py-2 text-gray-700 hover:text-blue-600">Produtos</a>
+                <a href="#sobre" class="block py-2 text-gray-700 hover:text-blue-600">Sobre</a>
+                <a href="#contato" class="block py-2 text-gray-700 hover:text-blue-600">Contato</a>
+                <a href="#contato" class="block mt-2 bg-blue-600 text-white px-6 py-2 rounded-lg text-center hover:bg-blue-700 transition duration-300">
+                    Solicitar Orçamento
+                </a>
             </div>
         </nav>
-        <div class="mobile-overlay"></div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="inicio" class="hero">
-            <div class="hero-content">
-                <h1>Gravações de Alta Precisão em Metais</h1>
-                <p>Transformamos suas ideias em realidade com tecnologia laser avançada, oferecendo gravações e personalizações de máxima qualidade para identificação e rastreabilidade industrial.</p>
-                <a href="#contato" class="cta-button">Solicite um Orçamento</a>
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                Gravação e Marcação a Laser<br>de Alta Precisão
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+                Transformamos suas ideias em realidade com tecnologia laser de fibra óptica avançada, oferecendo gravações permanentes e personalizações de máxima qualidade para identificação e rastreabilidade industrial.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contato" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 shadow-lg">
+                    Solicitar Orçamento
+                </a>
+                <a href="#servicos" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                    Conheça Nossos Serviços
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Quem Somos -->
-        <section id="sobre" class="fade-in">
-            <div class="about-section">
-                <h2 class="section-title">Quem Somos</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>Nossa Missão</h3>
-                        <p>Fornecer gravações de alta performance em metais, com foco em qualidade, agilidade e soluções versáteis para identificação e personalização em diversos setores industriais.</p>
+    <!-- Serviços Section -->
+    <section id="servicos" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos Serviços</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Oferecemos soluções completas em gravação a laser com tecnologia de fibra óptica para diversos materiais e aplicações industriais.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+<!--                <a href="/servicos/gravacao-laser-metais">-->
+                    <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="/images/servico-gravacao-inox-aluminio.png"
+                                 alt="Gravação a Laser em Metais - Serviço de gravação a laser"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                            <div class="absolute bottom-4 left-4">
+                                <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                         stroke-linejoin="round" class="lucide lucide-zap w-6 h-6 text-white">
+                                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                            <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Gravação a Laser em Inox e Alumínio</h3>
+                            <p class="text-sm text-muted-foreground leading-relaxed">Gravações permanentes de alta precisão em diversos tipos de metais, garantindo durabilidade e legibilidade perfeita em qualquer ambiente industrial.</p>
+                        </div>
+
+                        <div class="p-6 pt-0 flex-1 flex flex-col">
+                            <ul class="space-y-2 flex-1">
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Aço inoxidável e alumínio
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Precisão micrométrica
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Resistência a intempéries
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Textos, logos, códigos
+                                </li>
+                            </ul>
+
+<!--                            <div class="mt-4 pt-4 border-t border-border">-->
+<!--                                <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+<!--                            </div>-->
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Nossa Visão</h3>
-                        <p>Ser a principal referência em gravação e personalização no Paraná até 2028, sendo a primeira escolha dos nossos clientes quando o assunto é excelência e inovação.</p>
+<!--                </a>-->
+
+<!--                <a href="/servicos/servico-gravacao-pintura">-->
+                    <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                        <div class="relative h-48 overflow-hidden">
+                            <img src="/images/servico-gravacao-pintura.webp"
+                                 alt="Gravação a Laser e Pintura - Serviço de gravação com acabamento com tinta"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                            <div class="absolute bottom-4 left-4">
+                                <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                         class="lucide lucide-palette w-6 h-6 text-white">
+                                        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                                        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                                        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                                        <circle cx="11.5" cy="14.5" r=".5" fill="currentColor"></circle>
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c2.56 0 4.88-.98 6.67-2.57l-1.42-1.42C16.14 19.38 14.18 20 12 20c-4.41 0-8-3.59-8-8s3.59-8 8-8c2.27 0 4.3.94 5.79 2.5l1.41-1.41C16.88 2.98 14.56 2 12 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                            <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Gravação a Laser e Pintura</h3>
+                            <p class="text-sm text-muted-foreground leading-relaxed">Gravação em baixo relevo com preenchimento de pintura, oferecendo alto contraste e durabilidade contra abrasão e agentes químicos.</p>
+                        </div>
+
+                        <div class="p-6 pt-0 flex-1 flex flex-col">
+                            <ul class="space-y-2 flex-1">
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Contraste máximo em metais
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Ideal para realçar identificação
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Resistência a solventes e atrito
+                                </li>
+                                <li class="flex items-center text-sm text-muted-foreground">
+                                    <div class="w-1.5 h-1.5 bg-accent rounded-full mr-3 flex-shrink-0"></div>
+                                    Segue padrões exigentes automotivos
+                                </li>
+                            </ul>
+
+<!--                            <div class="mt-4 pt-4 border-t border-border">-->
+<!--                                <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+<!--                            </div>-->
+                        </div>
+                    </div>
+<!--                </a>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section id="produtos" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos Produtos</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Linha completa de produtos para identificação industrial, corporativa e predial com a mais alta qualidade e durabilidade.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produto 1 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/plaquetas-identificacao-aluminio.webp"
+                             alt="Plaquetas de Identificação em Alumínio"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+<!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                                <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-tag text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Plaquetas de Identificação em Alumínio</h3>
+                        <p class="text-gray-600 text-sm">Placas personalizadas em alumínio anodizado com gravação a laser permanente.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+
+                <!-- Produto 2 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/identificacao-industrial.jpg"
+                             alt="Identificação Industrial"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-cogs text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Identificação Industrial</h3>
+                        <p class="text-gray-600 text-sm">Soluções completas para identificação de equipamentos, máquinas e componentes industriais.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+
+                <!-- Produto 3 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/etiqueta-identificacao-equipamentos-seguranca.webp"
+                             alt="Etiquetas de Identificação para Equipamentos e Segurança"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Etiquetas de Identificação para Equipamentos e Segurança</h3>
+                        <p class="text-gray-600 text-sm">Etiquetas resistentes para ambientes industriais exigentes.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+
+                <!-- Produto 5 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/codigo-barra-qr-code.webp"
+                             alt="Códigos de Barras / QR Codes"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-qrcode text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Códigos de Barras / QR Codes</h3>
+                        <p class="text-gray-600 text-sm">Gravação permanente de códigos para rastreabilidade e controle de ativos.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+                
+                <!-- Produto 7 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/industria-eletrica.jpg"
+                             alt="Indústria Elétrica"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-bolt text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Indústria Elétrica</h3>
+                        <p class="text-gray-600 text-sm">Etiquetas e placas específicas para o setor elétrico e energético.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+
+                <!-- Produto 8 -->
+                <!--                <a href="/produtos/nome">-->
+                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">
+
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="/images/etiquetas-hidraulica-aquecimento.webp"
+                             alt="Etiquetas para Hidráulica e Aquecimento"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                        <div class="absolute bottom-4 left-4">
+                            <!--                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">-->
+                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">
+                                <i class="fas fa-tint text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col space-y-1.5 p-6 pb-4">
+                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Etiquetas para Hidráulica e Aquecimento</h3>
+                        <p class="text-gray-600 text-sm">Identificação resistente para sistemas hidráulicos e de aquecimento.</p>
+                    </div>
+
+                    <div class="p-6 pt-0 flex-1 flex flex-col">
+                        <!--                        <div class="mt-4 pt-4 border-t border-border">-->
+                        <!--                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>-->
+                        <!--                        </div>-->
+                    </div>
+                </div>
+                <!--                </a>-->
+
+<!--                &lt;!&ndash; Produto 9 &ndash;&gt;-->
+<!--                &lt;!&ndash;                <a href="/produtos/nome">&ndash;&gt;-->
+<!--                <div class="rounded-lg border text-card-foreground shadow-sm group hover:shadow-card transition-all duration-300 hover:-translate-y-1 border-metal-light bg-card overflow-hidden h-full">-->
+
+<!--                    <div class="relative h-48 overflow-hidden">-->
+<!--                        <img src="/images/"-->
+<!--                             alt="Identificação Predial e Corporativa"-->
+<!--                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">-->
+<!--                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>-->
+
+<!--                        <div class="absolute bottom-4 left-4">-->
+<!--                            &lt;!&ndash;                            <div class="w-12 h-12 bg-gradient-laser rounded-lg flex items-center justify-center group-hover:shadow-laser transition-all duration-300">&ndash;&gt;-->
+<!--                            <div class="bg-blue-600 text-white w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 ">-->
+<!--                                <i class="fas fa-building text-xl"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="flex flex-col space-y-1.5 p-6 pb-4">-->
+<!--                        <h3 class="tracking-tight text-xl font-bold text-foreground group-hover:text-accent transition-colors duration-300">Identificação Predial e Corporativa</h3>-->
+<!--                        <p class="text-gray-600 text-sm">Placas e sinalizações elegantes para ambientes corporativos e prediais.</p>-->
+<!--                    </div>-->
+
+<!--                    <div class="p-6 pt-0 flex-1 flex flex-col">-->
+<!--                        &lt;!&ndash;                        <div class="mt-4 pt-4 border-t border-border">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <span class="text-sm text-accent font-medium group-hover:text-accent-foreground transition-colors">Saiba mais →</span>&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;                </a>&ndash;&gt;-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section id="sobre" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Sobre a BPS Gravações</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        A <strong>BPS Gravações</strong> é especializada em gravação e marcação a laser de alta precisão, oferecendo soluções completas para identificação industrial, corporativa e predial. Equipe com anos de experiência no mercado, nos consolidamos como referência em qualidade e inovação tecnológica.
+                    </p>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Trabalhamos com tecnologia de <strong>laser de fibra óptica</strong>, que garante gravações permanentes, precisas e de alta qualidade em diversos materiais, incluindo metais, alumínio, inox e madeira. Nossa tecnologia permite criar marcações que resistem ao tempo e às condições mais adversas.
+                    </p>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Nosso compromisso é fornecer produtos e serviços que atendam às mais rigorosas normas técnicas e regulamentações, sempre com foco em qualidade, agilidade e atendimento personalizado.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <p class="text-gray-800 font-semibold">Qualidade Superior</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <p class="text-gray-800 font-semibold">Prazos Expressos</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
+                            <p class="text-gray-800 font-semibold">Precisão Técnica</p>
+                        </div>
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-3xl font-bold text-blue-600 mb-2">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <p class="text-gray-800 font-semibold">Atendimento Personalizado</p>
+                        </div>
                     </div>
                 </div>
                 
-                <h3 style="text-align: center; margin: 3rem 0 2rem; color: #1e293b; font-size: 1.8rem;">Nossos Valores</h3>
-                <div class="values-grid">
-                    <div class="value-item">
-                        <div class="value-icon">🌱</div>
-                        <h4>Respeito</h4>
-                        <p>Às pessoas e ao meio ambiente em todas as nossas operações</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">🚀</div>
-                        <h4>Inovação</h4>
-                        <p>Orientada por processos eficientes e tecnologia de ponta</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">⭐</div>
-                        <h4>Simplicidade</h4>
-                        <p>Soluções diretas e eficazes para suas necessidades</p>
-                    </div>
-                    <div class="value-item">
-                        <div class="value-icon">⚡</div>
-                        <h4>Agilidade</h4>
-                        <p>Prazos curtos sem comprometer a qualidade</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Serviços -->
-        <section id="servicos" class="fade-in">
-            <h2 class="section-title">Nossos Serviços</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Gravação a Laser em Metais</h3>
-                    <p>Gravações permanentes de alta precisão em diversos tipos de metais, garantindo durabilidade e legibilidade perfeita em qualquer ambiente industrial.</p>
-                </div>
-                <div class="card">
-                    <h3>Identificação Técnica</h3>
-                    <p>Placas de identificação personalizadas para equipamentos, máquinas e componentes industriais, seguindo normas técnicas e regulamentações específicas.</p>
-                </div>
-                <div class="card">
-                    <h3>Personalização Industrial</h3>
-                    <p>Soluções customizadas para marcação de peças, numeração sequencial, códigos de barras e informações técnicas específicas do seu segmento.</p>
-                </div>
-                <div class="card">
-                    <h3>Sistemas de Rastreabilidade</h3>
-                    <p>Implementação de códigos e marcações que permitem o rastreamento completo de peças e componentes ao longo de toda a cadeia produtiva.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Diferenciais -->
-        <section id="diferenciais" class="fade-in">
-            <h2 class="section-title">Nossos Diferenciais</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Qualidade Superior</h3>
-                    <p>Utilizamos equipamentos de tecnologia laser avançada que garantem gravações com precisão micrométrica e acabamento impecável em todas as peças.</p>
-                </div>
-                <div class="card">
-                    <h3>Prazos Expressos</h3>
-                    <p>Nossa estrutura otimizada permite entregas rápidas sem comprometer a qualidade, atendendo urgências e demandas com prazos desafiadores.</p>
-                </div>
-                <div class="card">
-                    <h3>Precisão Técnica</h3>
-                    <p>Controle rigoroso de qualidade em cada etapa do processo, garantindo que todas as especificações técnicas sejam atendidas perfeitamente.</p>
-                </div>
-                <div class="card">
-                    <h3>Atendimento Personalizado</h3>
-                    <p>Cada projeto é tratado de forma única, com consultoria especializada para encontrar a melhor solução para sua aplicação específica.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Galeria -->
-        <section id="galeria" class="fade-in">
-            <h2 class="section-title">Nossos Trabalhos</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/industrial.webp" alt="Placas de Identificação Industrial" loading="lazy" >
-                    <div class="gallery-overlay">
-                        <h4>Placas de Identificação Industrial</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/stainless-steel.webp" alt="Gravação em Aço Inoxidável" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4>Gravação em Aço Inoxidável</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/Component Marking.webp" alt="Marcação de Componentes" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4>Marcação de Componentes</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/rastreability.webp" alt="Códigos de Rastreabilidade" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4>Códigos de Rastreabilidade</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/aluminum-customization.webp" alt="Personalização em Alumínio" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4>Personalização em Alumínio</h4>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/card.webp" alt="Cartões" loading="lazy">
-                    <div class="gallery-overlay">
-                        <h4>Cartões</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contato -->
-        <section id="contato" class="fade-in">
-            <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3 style="margin-bottom: 2rem;">Informações de Contato</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <strong>E-mail</strong><br>
-                            contato@bpsgravacoes.com.br
-                        </div>
-                    </div>
-                    
-                    <div class="contact-buttons">
-                        <a href="https://wa.me/5541998065501?text=Olá! Gostaria de solicitar um orçamento para gravação a laser." class="contact-btn whatsapp" target="_blank">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.384"/>
-                            </svg>
-                            WhatsApp
-                        </a>
-                        <a href="mailto:contato@bpsgravacoes.com.br?subject=Solicitação de Orçamento - BPS Gravações&body=Olá! Gostaria de solicitar um orçamento para:" class="contact-btn email">
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                            </svg>
-                            E-mail
-                        </a>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <strong>Telefone/WhatsApp</strong><br>
-                            (41) 99806-5501
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong>Endereço</strong><br>
-                            Pinhais - Paraná<br>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div>
-                            <strong>Horário de Atendimento</strong><br>
-                            Segunda a Sexta: 10h às 18h<br>
+                <div class="relative">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl p-8 text-white shadow-2xl">
+                        <h3 class="text-2xl font-bold mb-6">Tecnologia de Ponta</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-laser text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Laser de Fibra Óptica</h4>
+                                    <p class="text-blue-100 text-sm">Tecnologia avançada para gravações permanentes e de alta precisão.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-microscope text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Precisão Micrométrica</h4>
+                                    <p class="text-blue-100 text-sm">Controle rigoroso de qualidade em cada etapa do processo.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-shield-alt text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Durabilidade Garantida</h4>
+                                    <p class="text-blue-100 text-sm">Marcações resistentes ao tempo e condições adversas.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-certificate text-2xl mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold mb-1">Conformidade Técnica</h4>
+                                    <p class="text-blue-100 text-sm">Produtos conforme normas e regulamentações específicas.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#inicio">Início</a>
-                <a href="#sobre">Quem Somos</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#diferenciais">Diferenciais</a>
-                <a href="#galeria">Galeria</a>
-                <a href="#contato">Contato</a>
-            </div>
-            
-            <div class="social-links">
-                <a href="https://www.linkedin.com/company/bps-grava%C3%A7%C3%B5es" title="LinkedIn">💼</a>
-                <a href="https://wa.me/5541998065501?text=Olá! Gostaria de conhecer mais sobre os serviços da BPS Gravações." title="WhatsApp" target="_blank">💬</a>
-                <a href="mailto:contato@bpsgravacoes.com.br" title="E-mail">📧</a>
-            </div>
-            
-            <div style="border-top: 1px solid #334155; padding-top: 2rem; color: #94a3b8;">
-                <p>&copy; 2025 BPS Gravações. Todos os direitos reservados.</p>
-                <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-                    Especialistas em gravação a laser | Pinhais - Paraná
+    <!-- Contato Section -->
+    <section id="contato" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800 mb-4">Entre em Contato</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Solicite um orçamento ou tire suas dúvidas. Nossa equipe está pronta para atender você.
                 </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Formulário -->
+                <div class="bg-white rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Solicite um Orçamento</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="nome" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="telefone" class="block text-gray-700 font-medium mb-2">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition">
+                        </div>
+                        <div>
+                            <label for="mensagem" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="mensagem" name="mensagem" rows="4" required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Informações de Contato -->
+                <div>
+                    <div class="bg-white rounded-xl p-8 shadow-lg mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Informações de Contato</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-envelope text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">E-mail</h4>
+                                    <a href="mailto:contato@bpsgravacoes.com.br" class="text-blue-600 hover:underline">
+                                        contato@bpsgravacoes.com.br
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-phone text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">Telefone</h4>
+                                    <a href="tel:+554198065501" class="text-blue-600 hover:underline">
+                                        (41) 99984-5501
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fab fa-whatsapp text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">WhatsApp</h4>
+                                    <a href="https://wa.me/5541999845501" target="_blank" class="text-blue-600 hover:underline">
+                                        (41) 99984-5501
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">Endereço</h4>
+                                    <p class="text-gray-600">Pinhais - Paraná</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                                    <i class="fas fa-clock text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">Horário de Atendimento</h4>
+                                    <p class="text-gray-600">Segunda a Sexta: 10h às 18h</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mapa -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3603.0159800523184!2d-49.191772722846316!3d-25.43772927755687!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dcef93de0f67c7%3A0xb22cc136faf4bdfa!2sRua%20Primeiro%20de%20Maio%2C%20442%20-%20Centro%2C%20Pinhais%20-%20PR%2C%2083323-020!5e0!3m2!1sen!2sbr!4v1759613737936!5m2!1sen!2sbr"
+                            width="100%"
+                            height="300"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Logo e Descrição -->
+                <div class="md:col-span-2">
+                    <img src="/images/logo-retangular-branco.webp" alt="" class="h-16 w-auto -m-3" />
+                    <p class="text-gray-400 mb-4 mt-4">
+                        Especialistas em gravação e marcação a laser profissional com tecnologia de fibra óptica. Qualidade, precisão e durabilidade para suas necessidades industriais.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/profile.php?id=61581641017038" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+<!--                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">-->
+<!--                            <i class="fab fa-instagram"></i>-->
+<!--                        </a>-->
+                        <a href="https://www.linkedin.com/company/bps-grava%C3%A7%C3%B5es" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Links Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-blue-400 transition">Início</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-blue-400 transition">Serviços</a></li>
+                        <li><a href="#produtos" class="text-gray-400 hover:text-blue-400 transition">Produtos</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-blue-400 transition">Sobre</a></li>
+                        <li><a href="#contato" class="text-gray-400 hover:text-blue-400 transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contato -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i> contato@bpsgravacoes.com.br</li>
+                        <li><i class="fas fa-phone mr-2"></i> (41) 99984-5501</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> Pinhais - PR</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 BPS Gravações. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/5541998065501?text=Olá! Gostaria de solicitar um orçamento para gravação a laser na BPS Gravações." class="whatsapp-float" target="_blank">
-        <div class="whatsapp-tooltip">Fale conosco no WhatsApp</div>
-        <svg viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.893 3.384"/>
-        </svg>
+    <a href="https://wa.me/5541999845501" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- JavaScript -->
     <script>
-        // Smooth scrolling for navigation links
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Form Submission with whatsapp
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            console.log('Dados do formulário:', data);
+            
+            const nome = data.nome;
+            const email = data.email;
+            const telefone = data.telefone || 'Não informado';
+            const mensagem = data.mensagem;
+            
+            const whatsappMessage = `Olá! Meu nome é ${nome}.%0A%0AE-mail: ${email}%0ATelefone: ${telefone}%0A%0AMensagem: ${mensagem}`;
+            const whatsappURL = `https://wa.me/5541999845501?text=${whatsappMessage}`;
+
+            window.open(whatsappURL, '_blank');
+            
+            // Limpar formulário
+            contactForm.reset();
+            
+            // Mostrar mensagem de sucesso (opcional)
+            alert('Obrigado pelo contato! Você será redirecionado para o WhatsApp.');
+        });
+        
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
-
-        // Scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Mobile menu toggle with improved functionality
-        const mobileMenuBtn = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        const mobileOverlay = document.querySelector('.mobile-overlay');
-        const body = document.body;
-
-        function toggleMobileMenu() {
-            mobileMenuBtn.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            mobileOverlay.classList.toggle('active');
-
-            // Prevent body scroll when menu is open
-            if (navLinks.classList.contains('active')) {
-                body.style.overflow = 'hidden';
+        
+        // Header shadow on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-lg');
             } else {
-                body.style.overflow = '';
+                header.classList.remove('shadow-lg');
             }
-        }
-
-        function closeMobileMenu() {
-            mobileMenuBtn.classList.remove('active');
-            navLinks.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            body.style.overflow = '';
-        }
-
-        // Toggle menu when clicking hamburger
-        mobileMenuBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMobileMenu();
-        });
-
-        // Close menu when clicking overlay
-        mobileOverlay.addEventListener('click', closeMobileMenu);
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuBtn.contains(e.target) &&
-                !navLinks.contains(e.target) &&
-                navLinks.classList.contains('active')) {
-                closeMobileMenu();
-            }
-        });
-
-        // Close mobile menu on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                closeMobileMenu();
-            }
-        });
-
-        // Prevent menu from closing when clicking inside nav-links
-        navLinks.addEventListener('click', function(e) {
-            e.stopPropagation();
         });
     </script>
 </body>
